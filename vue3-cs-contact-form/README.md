@@ -1,24 +1,12 @@
-# vue3-cs-contact-form
+# Vue3 - Costumer Services contact form
 
-## Project setup
-```
-npm install
-```
+Link to source code:
+[https://github.com/Namonaki0/vue3-cs-contact-form/tree/main/vue3-cs-contact-form](https://github.com/Namonaki0/vue3-cs-contact-form/tree/main/vue3-cs-contact-form)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Acknowledgement message
 
-### Compiles and minifies for production
-```
-npm run build
-```
+The user should see an acknowledgement message upon submiting the form.
 
-### Lints and fixes files
-```
-npm run lint
-```
+## Styling
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+All styling done using Tailwind CSS

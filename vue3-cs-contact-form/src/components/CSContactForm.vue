@@ -1,28 +1,24 @@
 <template>
-  <div class="flex-1 grid grid-cols-6 md:grid-cols-12 px-2 py-4" data-v-75749900="" data-v-567de64c-s="">
-    <div class="col-span-6 col-start-1 md:col-span-10 md:col-start-2 xl:col-span-10 xl:col-start-2 flex flex-col"
-      data-v-75749900="" data-v-567de64c-s="">
-      <span class="block overflow-hidden flex flex-col items-center text-center pb-6" data-v-75749900=""
-        data-v-567de64c-s=""><span
-          class="relative block">
-          <h1 class="heading-1" data-v-75749900="">Contact Us</h1>
-          <p class="text-md" data-v-75749900="">
+  <div class="flex-1 grid grid-cols-6 md:grid-cols-12 px-2 py-4">
+    <div
+      class="relative col-span-6 col-start-1 md:col-span-10 md:col-start-2 xl:col-span-10 xl:col-start-2 flex flex-col"
+      v-if="messageDisplay">
+      <span class="block overflow-hidden flex flex-col items-center text-center pb-6"><span class="relative block">
+          <h1 class="heading-1">Contact Us</h1>
+          <p class="text-md">
             If you have an enquiry regarding the online shop or a general
             enquiry for our Customer Services department, please contact us
             either by completing the form below.
           </p>
         </span></span>
-      <div class="" data-v-75749900=""
-        data-v-567de64c-s="">
-        <form class="grid flex-row w-full grid-cols-1 lg:grid-cols-2 md:gap-4" data-v-75749900="">
-          <div class="flex-grow pb-6" data-v-75749900="">
+      <div>
+        <form class="grid flex-row w-full grid-cols-1 lg:grid-cols-2 md:gap-4">
+          <div class="flex-grow pb-6">
             <div class="relative flex w-full">
-              <div
-                class="flex border-0 border-b border-solid border-black text-black w-full py-1 px-0">
+              <div class="flex border-0 border-b border-solid border-black text-black w-full py-1 px-0">
                 <!----><input class="outline-none w-full" type="text" />
               </div>
-              <span
-                class="absolute left-0 duration-300 pointer-events-none placeholder opacity-70 text-black ">First
+              <span class="absolute left-0 duration-300 pointer-events-none placeholder opacity-70 text-black ">First
                 Name*</span>
               <!---->
               <!---->
@@ -30,14 +26,12 @@
             </div>
             <!---->
           </div>
-          <div class="flex-grow pb-6" data-v-75749900="">
+          <div class="flex-grow pb-6">
             <div class="relative flex w-full">
-              <div
-                class="flex border-0 border-b border-solid border-black py-1 text-black w-full py-1 px-0">
+              <div class="flex border-0 border-b border-solid border-black py-1 text-black w-full py-1 px-0">
                 <!----><input class="outline-none w-full" type="text" />
               </div>
-              <span
-                class="absolute left-0 pointer-events-none placeholder opacity-70 bottom-1 text-black">Last
+              <span class="absolute left-0 pointer-events-none placeholder opacity-70 bottom-1 text-black">Last
                 Name*</span>
               <!---->
               <!---->
@@ -45,14 +39,12 @@
             </div>
             <!---->
           </div>
-          <div class="flex-grow pb-6" data-v-75749900="">
+          <div class="flex-grow pb-6">
             <div class="relative flex w-full">
-              <div
-                class="flex border-0 border-b border-solid border-black py-1 text-black w-full py-1 px-0">
+              <div class="flex border-0 border-b border-solid border-black py-1 text-black w-full py-1 px-0">
                 <!----><input class="outline-none w-full" type="email" />
               </div>
-              <span
-                class="absolute left-0 pointer-events-none placeholder opacity-70 bottom-1 text-black">Email
+              <span class="absolute left-0 pointer-events-none placeholder opacity-70 bottom-1 text-black">Email
                 Address*</span>
               <!---->
               <!---->
@@ -60,16 +52,17 @@
             </div>
             <!---->
           </div>
-          <div class="relative flex-grow pb-6" data-v-75749900="">
-            <div class="flex items-center w-full" data-v-12419bc9="">
+          <div class="relative flex-grow pb-6 " @click="dropdownMenu">
+            <div class="flex items-center w-full">
               <!---->
-              <div class="relative select-input w-full cursor-pointer" data-v-12419bc9="">
-                <label class="absolute text-base bottom-1 left-0 opacity-60 transform duration-400 ease-ease-1"
-                  data-v-12419bc9="">Enquiry type*</label>
+              <div class="relative select-input w-full cursor-pointer cursor-pointer">
+                <label
+                  class="pointer-events-none absolute text-base bottom-1 left-0 opacity-60 transform duration-400 ease-ease-1">Enquiry
+                  type*</label>
                 <div
                   class="transform absolute w-2 h-2 -translate-y-1/2 right-0.5 top-1/2 transform transform-all ease-ease-1 duration-300"
-                  data-v-d79371a0="" data-v-12419bc9="" style="width: 10px; height: 10px">
-                  <div class="icon" data-v-d79371a0="" style="
+                  style="width: 10px; height: 10px">
+                  <div class="icon" style="
                       --fillColour: none;
                       --strokeColour: black;
                       --width: 10px;
@@ -77,74 +70,73 @@
                      ;
                     "></div>
                 </div>
-                <input class="pointer-events-none text-black w-full py-1 px-0 outline-none"
-                  type="select" data-v-12419bc9="" />
-                <div class="w-full bg-black h-divider" data-v-12419bc9=""></div>
+                <input class="pointer-events-none text-black w-full py-1 px-0 outline-none" type="select" />
+                <div class="w-full bg-black h-divider"></div>
               </div>
               <!--? OPTIONS DROPDOWN -->
               <ul
                 class="select-options fixed z-100 h-200 overflow-y-auto text-sm border border-b-0 border-l-0 border-solid pointer-events-auto bg-lightGrey border-grey ps-scroll"
-                data-v-12419bc9="" style="width: 484px; top: 177px; left: 633px;">
+                style="width: 484px; top: 177px; left: 633px;" v-if="dropdownVisible">
                 <!---->
-                <li class="relative block p-2 bg-lightGrey dropdown-item cursor-pointer" data-v-12419bc9="" style="">
-                  <div class="flex flex-col" data-v-12419bc9="">
-                    <div class="flex items-center" data-v-12419bc9="">
+                <li class="relative block p-2 bg-lightGrey dropdown-item cursor-pointer">
+                  <div class="flex flex-col">
+                    <div class="flex items-center">
                       <!---->Deliveries
                     </div>
                     <!---->
                   </div>
                 </li>
-                <li class="relative block p-2 bg-grey dropdown-item cursor-pointer" data-v-12419bc9="" style="">
-                  <div class="flex flex-col" data-v-12419bc9="">
-                    <div class="flex items-center" data-v-12419bc9="">
+                <li class="relative block p-2 bg-grey dropdown-item cursor-pointer">
+                  <div class="flex flex-col">
+                    <div class="flex items-center">
                       <!---->Orders
                     </div>
                     <!---->
                   </div>
                 </li>
-                <li class="relative block p-2 bg-lightGrey dropdown-item cursor-pointer" data-v-12419bc9="">
-                  <div class="flex flex-col" data-v-12419bc9="">
-                    <div class="flex items-center" data-v-12419bc9="">
+                <li class="relative block p-2 bg-lightGrey dropdown-item cursor-pointer">
+                  <div class="flex flex-col">
+                    <div class="flex items-center">
                       <!---->Payments
                     </div>
                     <!---->
                   </div>
                 </li>
-                <li class="relative block p-2 bg-grey dropdown-item cursor-pointer" data-v-12419bc9="">
-                  <div class="flex flex-col" data-v-12419bc9="">
-                    <div class="flex items-center" data-v-12419bc9="">
+                <li class="relative block p-2 bg-grey dropdown-item cursor-pointer">
+                  <div class="flex flex-col">
+                    <div class="flex items-center">
                       <!---->Product/Stock
                     </div>
                     <!---->
                   </div>
                 </li>
-                <li class="relative block p-2 bg-lightGrey dropdown-item cursor-pointer" data-v-12419bc9="">
-                  <div class="flex flex-col" data-v-12419bc9="">
-                    <div class="flex items-center" data-v-12419bc9="">
+                <li class="relative block p-2 bg-lightGrey dropdown-item cursor-pointer">
+                  <div class="flex flex-col">
+                    <div class="flex items-center">
                       <!---->Returns
                     </div>
                     <!---->
                   </div>
                 </li>
-                <li class="relative block p-2 bg-grey dropdown-item cursor-pointer" data-v-12419bc9="">
-                  <div class="flex flex-col" data-v-12419bc9="">
-                    <div class="flex items-center" data-v-12419bc9="">
+                <li class="relative block p-2 bg-grey dropdown-item cursor-pointer">
+                  <div class="flex flex-col">
+                    <div class="flex items-center">
                       <!---->Shipping
                     </div>
                     <!---->
                   </div>
                 </li>
-                <li class="relative block p-2 bg-lightGrey dropdown-item cursor-pointer" data-v-12419bc9="">
-                  <div class="flex flex-col" data-v-12419bc9="">
-                    <div class="flex items-center" data-v-12419bc9="">
+                <li class="relative block p-2 bg-lightGrey dropdown-item cursor-pointer">
+                  <div class="flex flex-col">
+                    <div class="flex items-center">
                       <!---->Promotion
                     </div>
                     <!---->
                   </div>
                 </li>
-                <li class="relative block p-2 bg-grey dropdown-item cursor-pointer" data-v-12419bc9="">
-                  <div class="flex flex-col" data-v-12419bc9="">
-                    <div class="flex items-center" data-v-12419bc9="">
+                <li class="relative block p-2 bg-grey dropdown-item cursor-pointer">
+                  <div class="flex flex-col">
+                    <div class="flex items-center">
                       <!---->Website/Technical
                     </div>
                     <!---->
@@ -157,32 +149,54 @@
             <!---->
           </div>
           <!---->
-          <div class="flex-grow lg:col-span-2 pb-6" data-v-75749900="">
-            <div class="relative placeholder-colour-fix" data-v-54de40c9="" data-v-75749900=""
-              style="--225913de: 220px">
+          <div class="flex-grow lg:col-span-2 pb-6">
+            <div class="relative placeholder-colour-fix">
               <textarea placeholder="Write your message here*"
                 class="outline-none text-black text-sm border border-solid border-black font-medium w-full p-2 h-48 placeholder:text-slate-700"
-                maxlength="999999" data-v-54de40c9=""></textarea>
+                maxlength="10000"></textarea>
               <!---->
               <!---->
             </div>
           </div>
-          <div class="flex-grow pb-6 lg:col-start-2" data-v-75749900="">
+          <div class="flex-grow pb-6 lg:col-start-2">
             <button
-              class="flex items-center transition-all duration-400 ease-1 disabled:opacity-30 disabled:cursor-not-allowed primary font-medium text-sm font-medium text-white p-1 py-3 px-2 mx-0 justify-self-end flex-1 w-full justify-between"
-              type="button" data-v-75749900="">
-              <div class="relative order-1">
+              class="flex items-center transition-all duration-400 ease-1 primary font-medium text-sm font-medium text-white p-1 py-3 px-2 mx-0 justify-self-end flex-1 w-full justify-between hover:bg-slate-700"
+              type="button" @click="messageDisplay">
+              <div class="relative order-1" @click="messageDisplay">
                 <span class="label whitespace-nowrap">Submit</span>
                 <!---->
               </div>
               <div class="-rotate-45 order-2">
-                <div class="animate-spin-progress" data-v-75749900="">
+                <div class="animate-spin-progress">
                   <!---->
                 </div>
               </div>
               <!---->
             </button>
           </div>
+
+            <div
+              class="grid place-content-center xl:place-content-center absolute px-10 py-10 w-full fixed left-0 right-0 bottom-0 bg-slate-300 mb-20"
+              v-if="isVisible">
+              <span class="text-3xl cursor-pointer absolute right-4 top-2" @click="closeModal">X</span>
+
+              <div
+                class="block col-span-6 col-start-1 md:col-span-2 md:col-start-2 xl:col-span-2 xl:col-start-2 px-16 py-10 flex flex-col text-center w-100 text-slate-800">
+                <h1 class="heading-1">Thank You!</h1>
+                <p class="text-md">Our Customer Services department will be in touch shortly.</p>
+                <div class="mt-6">
+                  <p>While you wait why not visit:</p>
+                  <div class="font-medium">
+                    <a href="https://www.paulsmith.com/uk/new-arrivals">NEW IN - </a>
+                    <a href="https://www.paulsmith.com/uk/mens">MENS - </a>
+                    <a href="https://www.paulsmith.com/uk/womens">WOMENS - </a>
+                    <a href="https://www.paulsmith.com/uk/homeware">HOME</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+
         </form>
       </div>
     </div>
@@ -192,9 +206,31 @@
 
 <script>
 export default {
-  props: {
-    msg: String,
+
+  data:() => {
+  return {
+    isVisible: false,
+    dropdownVisible: false,
+    opacity: 1,
+    scroll: "contain"
+  }
+},
+methods: {
+  messageDisplay() {  
+    this.isVisible = true
+    if (this.isVisible) {
+      document.body.style.overflowY = "hidden"
+      document.body.style.backgroundColor = "black"
+    }
   },
+  closeModal() {
+    this.isVisible = false
+    if (!this.isVisible) document.body.style.overflowY = "scroll"
+  },
+  dropdownMenu() {
+    this.dropdownVisible = !this.dropdownVisible
+  }
+}
 };
 </script>
 
@@ -290,9 +326,9 @@ textarea {
 
 
 
-ul {
+/* ul {
   visibility: hidden;
-}
+} */
 
 /* span["bottom"]:focus {
   
