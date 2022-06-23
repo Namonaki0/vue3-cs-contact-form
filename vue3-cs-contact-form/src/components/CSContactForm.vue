@@ -3,7 +3,7 @@
     <div
       class="relative col-span-6 col-start-1 md:col-span-10 md:col-start-2 xl:col-span-10 xl:col-start-2 flex flex-col"
       v-if="messageDisplay">
-      <span class="block overflow-hidden flex flex-col items-center text-center pb-6"><span class="relative block">
+      <span class="block overflow-hidden flex flex-col items-center text-center pb-8"><span class="relative block">
           <h1 class="heading-1">Contact Us</h1>
           <p class="text-md">
             If you have an enquiry regarding the online shop or a general
@@ -15,43 +15,41 @@
         <form class="grid flex-row w-full grid-cols-1 lg:grid-cols-2 md:gap-4">
           <div class="flex-grow pb-6">
             <div class="relative flex w-full">
-              <div class="flex border-0 border-b border-solid border-black text-black w-full py-1 px-0">
-                <!----><input class="outline-none w-full" type="text" />
-              </div>
-              <span class="absolute left-0 duration-300 pointer-events-none placeholder opacity-70 text-black ">First
-                Name*</span>
-              <!---->
-              <!---->
-              <div class="w-0 bg-black h-divider"></div>
+              <input id="firstName" name="firstName" type="text"
+                class="peer h-10 w-full border-b border-black pl-1 text-gray-900 placeholder-transparent focus:outline-none focus:border-rose-600"
+                placeholder="First Name" />
+              <label for="firstName"
+                class="absolute left-0 -top-3.5 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-800 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-slate-700 peer-focus:text-sm">First
+                Name</label>
+
             </div>
             <!---->
           </div>
           <div class="flex-grow pb-6">
             <div class="relative flex w-full">
-              <div class="flex border-0 border-b border-solid border-black py-1 text-black w-full py-1 px-0">
-                <!----><input class="outline-none w-full" type="text" />
-              </div>
-              <span class="absolute left-0 pointer-events-none placeholder opacity-70 bottom-1 text-black">Last
-                Name*</span>
-              <!---->
-              <!---->
-              <div class="w-0 bg-black h-divider"></div>
+              <input id="lastName" name="lastName" type="text"
+                class="peer h-10 w-full border-b border-black pl-1 text-gray-900 placeholder-transparent focus:outline-none focus:border-rose-600"
+                placeholder="Last Name" />
+              <label for="lastName"
+                class="absolute left-0 -top-3.5 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-800 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-slate-700 peer-focus:text-sm">Last
+                Name</label>
             </div>
             <!---->
           </div>
           <div class="flex-grow pb-6">
             <div class="relative flex w-full">
-              <div class="flex border-0 border-b border-solid border-black py-1 text-black w-full py-1 px-0">
-                <!----><input class="outline-none w-full" type="email" />
-              </div>
-              <span class="absolute left-0 pointer-events-none placeholder opacity-70 bottom-1 text-black">Email
-                Address*</span>
-              <!---->
-              <!---->
-              <div class="w-0 bg-black h-divider"></div>
+
+              <input id="email" name="email" type="email"
+                class="peer h-10 w-full border-b border-black pl-1 text-gray-900 placeholder-transparent focus:outline-none focus:border-rose-600"
+                placeholder="Email Address" />
+              <label for="email"
+                class="absolute left-0 -top-3.5 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-800 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-slate-700 peer-focus:text-sm">Email
+                Address</label>
+
             </div>
             <!---->
           </div>
+          <!--? DROPDOWN MENU WRAPPER -->
           <div class="relative flex-grow pb-6 " @click="dropdownMenu">
             <div class="flex items-center w-full">
               <!---->
@@ -62,88 +60,87 @@
                 <div
                   class="transform absolute w-2 h-2 -translate-y-1/2 right-0.5 top-1/2 transform transform-all ease-ease-1 duration-300"
                   style="width: 10px; height: 10px">
-                  <div class="icon" style="
-                      --fillColour: none;
-                      --strokeColour: black;
-                      --width: 10px;
-                      --height: 10px;
-                     ;
-                    "></div>
+                  <div class="icon" style="">
+                  </div>
+
                 </div>
                 <input class="pointer-events-none text-black w-full py-1 px-0 outline-none" type="select" />
-                <div class="w-full bg-black h-divider"></div>
+
+                <!--? DROPDOWN OPTIONS-->
+                <ul
+                  class="select-options fixed y-0 overflow-y-auto text-sm border border-b-0 border-l-0 border-solid pointer-events-auto bg-lightGrey border-grey"
+                  style="width: 484px; top: 177px; left: 633px;" v-if="dropdownVisible">
+                  <!---->
+                  <li class="relative block p-2 bg-lightGrey dropdown-item cursor-pointer">
+                    <div class="flex flex-col">
+                      <div class="flex items-center">
+                        <!---->Deliveries
+                      </div>
+                      <!---->
+                    </div>
+                  </li>
+                  <li class="relative block p-2 bg-grey dropdown-item cursor-pointer">
+                    <div class="flex flex-col">
+                      <div class="flex items-center">
+                        <!---->Orders
+                      </div>
+                      <!---->
+                    </div>
+                  </li>
+                  <li class="relative block p-2 bg-lightGrey dropdown-item cursor-pointer">
+                    <div class="flex flex-col">
+                      <div class="flex items-center">
+                        <!---->Payments
+                      </div>
+                      <!---->
+                    </div>
+                  </li>
+                  <li class="relative block p-2 bg-grey dropdown-item cursor-pointer">
+                    <div class="flex flex-col">
+                      <div class="flex items-center">
+                        <!---->Product/Stock
+                      </div>
+                      <!---->
+                    </div>
+                  </li>
+                  <li class="relative block p-2 bg-lightGrey dropdown-item cursor-pointer">
+                    <div class="flex flex-col">
+                      <div class="flex items-center">
+                        <!---->Returns
+                      </div>
+                      <!---->
+                    </div>
+                  </li>
+                  <li class="relative block p-2 bg-grey dropdown-item cursor-pointer">
+                    <div class="flex flex-col">
+                      <div class="flex items-center">
+                        <!---->Shipping
+                      </div>
+                      <!---->
+                    </div>
+                  </li>
+                  <li class="relative block p-2 bg-lightGrey dropdown-item cursor-pointer">
+                    <div class="flex flex-col">
+                      <div class="flex items-center">
+                        <!---->Promotion
+                      </div>
+                      <!---->
+                    </div>
+                  </li>
+                  <li class="relative block p-2 bg-grey dropdown-item cursor-pointer">
+                    <div class="flex flex-col">
+                      <div class="flex items-center">
+                        <!---->Website/Technical
+                      </div>
+                      <!---->
+                    </div>
+                  </li>
+                </ul>
+                <!--? OPTIONS DROPDOWN - END -->
+                <div class="relative w-full bg-black h-divider"></div>
+
               </div>
-              <!--? OPTIONS DROPDOWN -->
-              <ul
-                class="select-options fixed z-100 h-200 overflow-y-auto text-sm border border-b-0 border-l-0 border-solid pointer-events-auto bg-lightGrey border-grey ps-scroll"
-                style="width: 484px; top: 177px; left: 633px;" v-if="dropdownVisible">
-                <!---->
-                <li class="relative block p-2 bg-lightGrey dropdown-item cursor-pointer">
-                  <div class="flex flex-col">
-                    <div class="flex items-center">
-                      <!---->Deliveries
-                    </div>
-                    <!---->
-                  </div>
-                </li>
-                <li class="relative block p-2 bg-grey dropdown-item cursor-pointer">
-                  <div class="flex flex-col">
-                    <div class="flex items-center">
-                      <!---->Orders
-                    </div>
-                    <!---->
-                  </div>
-                </li>
-                <li class="relative block p-2 bg-lightGrey dropdown-item cursor-pointer">
-                  <div class="flex flex-col">
-                    <div class="flex items-center">
-                      <!---->Payments
-                    </div>
-                    <!---->
-                  </div>
-                </li>
-                <li class="relative block p-2 bg-grey dropdown-item cursor-pointer">
-                  <div class="flex flex-col">
-                    <div class="flex items-center">
-                      <!---->Product/Stock
-                    </div>
-                    <!---->
-                  </div>
-                </li>
-                <li class="relative block p-2 bg-lightGrey dropdown-item cursor-pointer">
-                  <div class="flex flex-col">
-                    <div class="flex items-center">
-                      <!---->Returns
-                    </div>
-                    <!---->
-                  </div>
-                </li>
-                <li class="relative block p-2 bg-grey dropdown-item cursor-pointer">
-                  <div class="flex flex-col">
-                    <div class="flex items-center">
-                      <!---->Shipping
-                    </div>
-                    <!---->
-                  </div>
-                </li>
-                <li class="relative block p-2 bg-lightGrey dropdown-item cursor-pointer">
-                  <div class="flex flex-col">
-                    <div class="flex items-center">
-                      <!---->Promotion
-                    </div>
-                    <!---->
-                  </div>
-                </li>
-                <li class="relative block p-2 bg-grey dropdown-item cursor-pointer">
-                  <div class="flex flex-col">
-                    <div class="flex items-center">
-                      <!---->Website/Technical
-                    </div>
-                    <!---->
-                  </div>
-                </li>
-              </ul>
-              <!--? OPTIONS DROPDOWN - END -->
+
               <!---->
             </div>
             <!---->
@@ -152,7 +149,7 @@
           <div class="flex-grow lg:col-span-2 pb-6">
             <div class="relative placeholder-colour-fix">
               <textarea placeholder="Write your message here*"
-                class="outline-none text-black text-sm border border-solid border-black font-medium w-full p-2 h-48 placeholder:text-slate-700"
+                class="outline-none text-black text-sm border border-solid border-black font-medium w-full p-2 h-48 placeholder:text-slate-700 resize-none"
                 maxlength="10000"></textarea>
               <!---->
               <!---->
@@ -175,32 +172,39 @@
             </button>
           </div>
 
-            <div
-              class="grid place-content-center xl:place-content-center absolute px-10 py-10 w-full fixed left-0 right-0 bottom-0 bg-slate-300 mb-20"
-              v-if="isVisible">
-              <span class="text-3xl cursor-pointer absolute right-4 top-2" @click="closeModal">X</span>
+          <!--? MESSAGE MODAL -->
+          <div
+            class="fixed grid place-content-center top-5 left-10 right-10 bottom-10 bg-transparent overflow-hidden"
+            v-if="isVisible">
 
-              <div
-                class="block col-span-6 col-start-1 md:col-span-2 md:col-start-2 xl:col-span-2 xl:col-start-2 px-16 py-10 flex flex-col text-center w-100 text-slate-800">
-                <h1 class="heading-1">Thank You!</h1>
-                <p class="text-md">Our Customer Services department will be in touch shortly.</p>
-                <div class="mt-6">
-                  <p>While you wait why not visit:</p>
-                  <div class="font-medium">
-                    <a href="https://www.paulsmith.com/uk/new-arrivals">NEW IN - </a>
-                    <a href="https://www.paulsmith.com/uk/mens">MENS - </a>
-                    <a href="https://www.paulsmith.com/uk/womens">WOMENS - </a>
-                    <a href="https://www.paulsmith.com/uk/homeware">HOME</a>
-                  </div>
-                </div>
+            <div
+              class=" absolute grid place-content-center inset-0 col-span-6 col-start-1 md:col-span-2 md:col-start-2
+            xl:col-span-2 xl:col-start-2 px-16 py-10 flex flex-col text-center w-100 text-slate-800 bg-slate-300
+            animate-slidein">
+            <span class="text-3xl cursor-pointer absolute right-4 top-2" @click="closeModal">X</span>
+
+            <h1 class="heading-1">Thank You!</h1>
+            <p class="text-md">Our Customer Services department will be in touch shortly.</p>
+            <div class="mt-6">
+              <p>While you wait why not visit:</p>
+              <div class="font-medium">
+                <a href="https://www.paulsmith.com/uk/new-arrivals">NEW IN - </a>
+                <a href="https://www.paulsmith.com/uk/mens">MENS - </a>
+                <a href="https://www.paulsmith.com/uk/womens">WOMENS - </a>
+                <a href="https://www.paulsmith.com/uk/homeware">HOME</a>
               </div>
             </div>
-    
-
-        </form>
+          </div>
       </div>
-    </div>
+      <!--? MESSAGE MODAL - END -->
 
+      </form>
+    </div>
+  </div>
+  <!-- <div class="absolute block left-0 bottom-0 top-0">
+        <img src="../assets/PS_logo.svg" alt="PS-logo" class="block">
+
+      </div> -->
   </div>
 </template>
 
@@ -228,7 +232,13 @@ methods: {
     if (!this.isVisible) document.body.style.overflowY = "scroll"
   },
   dropdownMenu() {
-    this.dropdownVisible = !this.dropdownVisible
+    if (!this.dropdownVisible) {
+      this.dropdownVisible = !this.dropdownVisible
+      document.body.style.overflowY = "hidden"
+    } else {
+      this.dropdownVisible = !this.dropdownVisible
+      document.body.style.overflowY = "scroll"
+    }
   }
 }
 };

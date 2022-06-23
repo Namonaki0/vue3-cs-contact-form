@@ -1,17 +1,14 @@
 <template>
   <CSContactForm />
-  <MessageModal v-show="isVisible"/>
 </template>
 
   <script>
     import CSContactForm from './components/CSContactForm.vue'
-    import MessageModal from "./components/MessageModal.vue"
 
 export default {  
 name: 'App',
 components: {
   CSContactForm,
-  MessageModal
 },
 
 }
