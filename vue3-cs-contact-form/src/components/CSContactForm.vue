@@ -110,27 +110,28 @@
 
     <!--? MESSAGE MODAL -->
     <div
-      class="fixed grid place-content-center top-0 left-0 right-0 bottom-0 bg-transparent overflow-hidden bg-orange-500 modal-overlay"
-     v-if="modalIsVisible">
+      class="fixed grid place-content-center top-0 left-0 right-0 bottom-0 bg-transparent overflow-hidden shadow-lg shadow-violet-500/50 border-white-400 modal-overlay" v-if="modalIsVisible">
 
-      <div class="absolute grid place-content-center col-span-6 col-start-0 top-10 left-5 right-5 bottom-10 md:col-span-2 md:col-start-2 
-            xl:col-span-2 xl:col-start-2 px-16 py-10 flex flex-col text-center w-100 y-100 text-slate-800 bg-slate-300
-            animate-slidein">
-        <span class="text-3xl cursor-pointer absolute right-4 top-2 hover:rotate-180 transition ease-in-out"
+      <div class="absolute flex justify-between col-span-6 col-start-0 top-10 left-5 right-5 bottom-10 md:col-span-2 md:col-start-2 
+            xl:col-span-2 xl:col-start-2  flex flex-col text-center w-100 y-100 text-slate-800 bg-violet-100
+            animate-slidein  modal-inner">
+        <span
+          class="text-3xl cursor-pointer absolute right-4 top-2 hover:rotate-180 hover:scale-125 transition ease-in-out"
           @click="closeModal">X
           <!-- <svg src="../assets/icons8-close.svg" class="bg-orange-500 text-white-300"></svg> -->
           <font-awesome-icon icon="fa-regular fa-xmark-large" />
         </span>
-
-        <h1 class="heading-1">Thank You!</h1>
-        <p class="text-md">Our Customer Services department will be in touch shortly.</p>
-        <div class="mt-6">
-          <p>While you wait why not visit:</p>
-          <div class="font-medium">
-            <a :href="this.newArrivalsUrl">NEW IN - </a>
-            <a :href="this.mensUrl">MENS - </a>
-            <a :href="this.womensUrl">WOMENS - </a>
-            <a :href="this.homewareUrl">HOME</a>
+        <div>
+          <h1 class="heading-1">Thank You!</h1>
+          <p class="text-md">Our Customer Services department will be in touch shortly.</p>
+        </div>
+        <div class="mt-6 mr-6 mb-4">
+          <p class="uppercase text-right -mb-2 font-bold italic">While you wait why not visit</p>
+          <div class="font-medium web-links-wrapper mt-2 text-right">
+            <a :href="this.newArrivalsUrl" class="hover:font-bold transition linear">NEW IN - </a>
+            <a :href="this.mensUrl" class="hover:font-bold transition linear">MENS - </a>
+            <a :href="this.womensUrl" class="hover:font-bold transition linear">WOMENS - </a>
+            <a :href="this.homewareUrl" class="hover:font-bold transition linear">HOME</a>
           </div>
         </div>
       </div>
@@ -265,6 +266,34 @@ h1 {
 
 .modal-overlay {
   background: #C1AADD;
+}
+
+.modal-inner {
+  overflow: hidden;
+}
+
+.modal-inner::before {
+  content: "";
+  display: block;
+  height: 2px;
+  margin-top: 15px;
+  margin-left: 1.5rem;
+  margin-bottom: 5px;
+  background: black;
+  width: 80%;
+}
+
+.web-links-wrapper {
+  text-transform: uppercase;
+}
+.web-links-wrapper::before {
+  content: "";
+  display: block;
+  height: 2px;
+  margin-left: auto;
+  margin-bottom: 5px;
+  background: black;
+  width: 80%;
 }
 
 textarea {
