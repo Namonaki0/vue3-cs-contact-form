@@ -4,8 +4,9 @@ module.exports = {
   theme: {
     extend: {},
     animation: {
-      slidein: "slidein .5s cubic-bezier(.17,.67,.83,.67)",
-      formSubmitEffect: "formSubmitEffect 1s linear",
+      slidein: "slidein .2s linear",
+      formSubmitEffect: "formSubmitEffect 1s linear forwards",
+      formFadeIn: "formFadeIn 250ms linear forwards",
     },
     keyframes: {
       slidein: {
@@ -19,10 +20,16 @@ module.exports = {
       formSubmitEffect: {
         "0%": { opacity: 0.9, transform: "translateX(0)" },
         "80%": { opacity: 0.2, transform: "scale(0.9)" },
-
         "100%": {
           opacity: 0,
-          transform: "translate(50%, 2%)",
+          transform: "translate(50%, 1%)",
+        },
+      },
+      formFadeIn: {
+        "0%": { opacity: 0.2, transform: "translateY(10%)" },
+        "100%": {
+          opacity: 1,
+          transform: "translatY(0)",
         },
       },
     },

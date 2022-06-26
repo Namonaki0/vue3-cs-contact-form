@@ -4,7 +4,7 @@
 
 The user should see an acknowledgement message upon submiting the form.
 
-## Styling
+## TailwindCSS - styling
 
 All styling done using Tailwind CSS - custom animations added.
 
@@ -13,7 +13,7 @@ All styling done using Tailwind CSS - custom animations added.
 [https://andreferreira-vue3cscontactform.netlify.app/](https://andreferreira-vue3cscontactform.netlify.app/)
 
 
-## Github - Link to source code
+## Github - source code
 [https://github.com/Namonaki0/vue3-cs-contact-form/tree/main/vue3-cs-contact-form](https://github.com/Namonaki0/vue3-cs-contact-form/tree/main/vue3-cs-contact-form)
 
 
