@@ -3,16 +3,17 @@
     <div
       class="relative col-span-6 col-start-1 md:col-span-10 md:col-start-2 xl:col-span-10 xl:col-start-2 flex flex-col"
       ref="formWrapper">
+
       <span class="block overflow-hidden flex flex-col items-center text-center pb-10"><span class="relative block">
           <h1 class="heading-1 transition delay-150">Contact Us</h1>
-          <p class="text-md">
+          <p class="text-md font-semibold">
             If you have an enquiry regarding the online shop or a general
             enquiry for our Customer Services department, please contact us
             by completing the form below.
           </p>
         </span></span>
       <div>
-        <form class="grid flex-row w-full grid-cols-1 lg:grid-cols-2 md:gap-4" @submit="onSubmit">
+        <form class="grid flex-row w-full grid-cols-1 lg:grid-cols-2 md:gap-4 font-semibold" @submit="onSubmit">
           <div class="flex-grow pb-6">
             <div class="relative flex w-full">
               <input id="firstName" name="firstName" type="text"
@@ -86,7 +87,7 @@
           <div class="flex-grow lg:col-span-2 pb-6">
             <div class="relative placeholder-colour-fix">
               <textarea placeholder="Write your message here*"
-                class="outline-none text-black text-sm border border-solid border-black bg-transparent font-medium w-full p-2 h-48 placeholder:text-slate-700 resize-none"
+                class="outline-none text-black text-sm border border-solid border-black bg-transparent font-semibold tracking-wide w-full p-2 h-48 placeholder:text-slate-700 resize-none"
                 maxlength="10000"></textarea>
               <!---->
               <!---->
@@ -94,7 +95,7 @@
           </div>
           <div class="flex-grow pb-6 lg:col-start-2">
             <button
-              class="flex items-center transition-all duration-400 ease-1 primary bg-black font-medium text-sm font-medium text-white p-1 py-3 px-2 mx-0 justify-self-end flex-1 w-full justify-between hover:bg-slate-700"
+              class="flex items-center transition-all duration-400 ease-1 primary bg-black font-medium text-sm font-medium tracking-wide text-white p-1 py-3 px-2 mx-0 justify-self-end flex-1 w-full justify-between hover:bg-slate-700"
               type="submit" @click="messageDisplay">
               <div class="relative order-1">
                 <span class="label whitespace-nowrap" v-if="submitTextIsVisible">Submit</span>
@@ -110,11 +111,12 @@
 
     <!--? MESSAGE MODAL -->
     <div
-      class="fixed grid place-content-center top-0 left-0 right-0 bottom-0 bg-transparent overflow-hidden shadow-lg shadow-violet-500/50 border-white-400 modal-overlay" v-if="modalIsVisible">
+      class="fixed grid place-content-center top-0 left-0 right-0 bottom-0 bg-transparent overflow-hidden shadow-lg shadow-violet-500/50 border-white-400 modal-overlay"
+      v-if="modalIsVisible">
 
       <div class="absolute flex justify-between col-span-6 col-start-0 top-10 left-5 right-5 bottom-10 md:col-span-2 md:col-start-2 
             xl:col-span-2 xl:col-start-2  flex flex-col text-center w-100 y-100 text-slate-800 bg-violet-100
-            animate-slidein  modal-inner">
+            animate-slidein modal-inner">
         <span
           class="text-3xl cursor-pointer absolute right-4 top-2 hover:rotate-180 hover:scale-125 transition ease-in-out"
           @click="closeModal">X
@@ -128,10 +130,10 @@
         <div class="mt-6 mr-6 mb-4">
           <p class="uppercase text-right -mb-2 font-bold italic">While you wait why not visit</p>
           <div class="font-medium web-links-wrapper mt-2 text-right">
-            <a :href="this.newArrivalsUrl" class="hover:font-bold transition linear">NEW IN - </a>
-            <a :href="this.mensUrl" class="hover:font-bold transition linear">MENS - </a>
-            <a :href="this.womensUrl" class="hover:font-bold transition linear">WOMENS - </a>
-            <a :href="this.homewareUrl" class="hover:font-bold transition linear">HOME</a>
+            <a :href="newArrivalsUrl" class="hover:font-bold transition linear">NEW IN - </a>
+            <a :href="mensUrl" class="hover:font-bold transition linear">MENS - </a>
+            <a :href="womensUrl" class="hover:font-bold transition linear">WOMENS - </a>
+            <a :href="homewareUrl" class="hover:font-bold transition linear">HOME</a>
           </div>
         </div>
       </div>
@@ -143,79 +145,76 @@
 </template>
 
 <script>
+
+import { ref, onMounted } from 'vue'
+
+
 export default {
-  data:() => {
-    return {
-      // FORM FIELDS
-      firstName: "",
-      email: "",
-      // ACTIONS
-      modalIsVisible: false,
-      processingMessageIsVisible: false,
-      submitTextIsVisible: true,
-      dropdownVisible: false,
-      buttonDisabled: false,
-      formSubmitEffect : false,
-      // STYLING
-      opacity: 1,
-      scroll: "contain",
-      // LINKS
-      newArrivalsUrl: "https://www.paulsmith.com/uk/new-arrivals",
-      mensUrl: "https://www.paulsmith.com/uk/mens",
-      womensUrl: "https://www.paulsmith.com/uk/womens",
-      homewareUrl: "https://www.paulsmith.com/uk/homeware"
+
+    setup() {
+    
+    // REFS
+    const formWrapper = ref(null)
+    let modalIsVisible = ref(false)
+    let processingMessageIsVisible = ref(false)
+    let submitTextIsVisible = ref(true)
+    let dropdownIsVisible = ref(false)
+    let formSubmitEffect = ref(false)
+
+    // MODAL CTA LINKS
+    const newArrivalsUrl = "https://www.paulsmith.com/uk/new-arrivals";
+    const mensUrl = "https://www.paulsmith.com/uk/mens";
+    const womensUrl ="https://www.paulsmith.com/uk/womens";
+    const homewareUrl = "https://www.paulsmith.com/uk/homeware";
+
+    // FORM FADE IN WHEN MOUNTED
+    onMounted(() => {
+      formFadeInOnPageLoad()
+    })
+
+    const formFadeInOnPageLoad = () => {
+      formWrapper.value.classList.add("animate-formFadeIn")
     }
-},
-mounted: function() {
-  this.formFadeInOnPageLoad();
-},
-methods: {
+   // FORM FADE IN WHEN MOUNTED - END
 
-  formFadeInOnPageLoad() {
-    this.$refs.formWrapper.classList.add("animate-formFadeIn");
-  },
-
-  onSubmit(e){
+  const onSubmit = (e) => {
     e.preventDefault()
-
-    this.processingMessageIsVisible = true
-    this.submitTextIsVisible = false
-
-    this.formSubmitEffect = true;
+    processingMessageIsVisible.value = true
+    submitTextIsVisible.value = false
+    formSubmitEffect.value = true
 
     setTimeout(() => {
-     
-      this.$refs.formWrapper.classList.remove("animate-formFadeIn");
-      this.$refs.formWrapper.classList.add("animate-formSubmitEffect");
+      formWrapper.value.classList.remove("animate-formFadeIn");
+      formWrapper.value.classList.add("animate-formSubmitEffect");
 
     }, 1800)
-  },
-  messageDisplay() {  
-
-    setTimeout(() => {
-      this.modalIsVisible = true
-      this.buttonDisabled = true
-
-
-      if (this.modalIsVisible) {
-        document.body.style.overflowY = "hidden"
-        document.body.style.backgroundColor = "black"
-      }
-
-
-
-    }, 3000)
-  },
-  closeModal() {
-    this.modalIsVisible = false
-    this.processingMessageIsVisible = false
-    this.submitTextIsVisible = true
-    this.$refs.formWrapper.classList.remove("animate-formSubmitEffect");
-    this.$refs.formWrapper.classList.add("animate-formFadeIn");
-    document.body.style.overflowY = "scroll"
   }
 
-}
+  // ACKNOWLEDGEMENT MESSAGE MODAL DISPLAY
+  const messageDisplay = () => {  
+
+    setTimeout(() => {
+      modalIsVisible.value = true
+
+      if (modalIsVisible.value) {
+        document.body.style.overflowY = "hidden"
+      }
+
+    }, 3000)
+  }
+   // ACKNOWLEDGEMENT MESSAGE MODAL DISPLAY - END
+
+  const closeModal = () => {
+    modalIsVisible.value = false
+    processingMessageIsVisible.value = false
+    submitTextIsVisible.value = true
+    formWrapper.value.classList.remove("animate-formSubmitEffect");
+    formWrapper.value.classList.add("animate-formFadeIn");
+    document.body.style.overflowY = "scroll"
+  }
+    return { formWrapper, modalIsVisible, processingMessageIsVisible, submitTextIsVisible, dropdownIsVisible, formSubmitEffect, formFadeInOnPageLoad, onSubmit, messageDisplay, closeModal, newArrivalsUrl, mensUrl, womensUrl, homewareUrl }
+    }
+
 };
 </script>
 
@@ -300,9 +299,9 @@ textarea {
   padding: 10px;
 }
 
-/* svg {
-  color: white;
-  z-index: 1000;
-} */
+input, textarea {
+  letter-spacing: .5px;
+}
+
 
 </style>

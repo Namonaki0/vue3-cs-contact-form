@@ -7,7 +7,7 @@
 
 
 export default {  
-name: 'App',
+  name: 'app',
 components: {
   CSContactForm,
 },
