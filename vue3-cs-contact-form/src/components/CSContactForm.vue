@@ -82,7 +82,7 @@
           <div class="flex-grow lg:col-span-2 pb-6">
             <div class="relative placeholder-colour-fix">
               <textarea placeholder="Write your message here*"
-                class="outline-none text-black text-sm border border-solid border-black bg-transparent font-semibold tracking-wide w-full p-2 h-48 placeholder:text-slate-700 resize-none"
+                class="outline-none text-black text-sm border border-solid border-black bg-transparent font-semibold tracking-wide w-full p-4 h-48 placeholder:text-slate-700 resize-none"
                 maxlength="10000" ref="textAreaInput"></textarea>
             </div>
           </div>
@@ -225,11 +225,6 @@ export default {
 
 <style scoped>
 
-:root {
-  --delay: "1s";
-  --duration: "150ms"
-}
-
 body,
 h1 {
   margin: 0;
@@ -290,11 +285,8 @@ margin-top: 5px;
   text-transform: uppercase;
 }
 
+input,
 textarea {
-  padding: 10px;
-}
-
-input, textarea {
   letter-spacing: .5px;
 }
 
