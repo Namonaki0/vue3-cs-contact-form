@@ -24,7 +24,6 @@
                 Name *</label>
 
             </div>
-            <!---->
           </div>
           <div class="flex-grow pb-6">
             <div class="relative flex w-full">
@@ -35,7 +34,6 @@
                 class="absolute left-0 -top-3.5 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-800 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-slate-700 peer-focus:text-sm">Last
                 Name</label>
             </div>
-            <!---->
           </div>
           <div class="flex-grow pb-6">
             <div class="relative flex w-full">
@@ -46,9 +44,7 @@
               <label for="email"
                 class="absolute left-0 -top-3.5 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-800 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-slate-700 peer-focus:text-sm">Email
                 Address *</label>
-
             </div>
-            <!---->
           </div>
           <!--? DROPDOWN MENU WRAPPER -->
           <div class="relative flex-grow pb-6">
@@ -83,14 +79,11 @@
             </div>
             <!---->
           </div>
-          <!---->
           <div class="flex-grow lg:col-span-2 pb-6">
             <div class="relative placeholder-colour-fix">
               <textarea placeholder="Write your message here*"
                 class="outline-none text-black text-sm border border-solid border-black bg-transparent font-semibold tracking-wide w-full p-2 h-48 placeholder:text-slate-700 resize-none"
                 maxlength="10000"></textarea>
-              <!---->
-              <!---->
             </div>
           </div>
           <div class="flex-grow pb-6 lg:col-start-2">
@@ -111,30 +104,37 @@
 
     <!--? MESSAGE MODAL -->
     <div
-      class="fixed grid place-content-center top-0 left-0 right-0 bottom-0 bg-transparent overflow-hidden shadow-lg shadow-violet-500/50 border-white-400 modal-overlay"
-      v-if="modalIsVisible">
-
-      <div class="absolute flex justify-between col-span-6 col-start-0 top-10 left-5 right-5 bottom-10 md:col-span-2 md:col-start-2 
+      class="fixed grid place-content-center top-0 left-0 right-0 bottom-0 bg-transparent overflow-hidden shadow-lg shadow-violet-500/50 border-white-400 modal-overlay">
+      <!-- v-if="modalIsVisible" -->
+      <div class="absolute flex justify-between align-content-center col-span-6 col-start-0 top-5 left-10 right-10 bottom-5 md:col-span-2 md:col-start-2 
             xl:col-span-2 xl:col-start-2  flex flex-col text-center w-100 y-100 text-slate-800 bg-violet-100
             animate-slidein modal-inner">
-        <span
-          class="text-3xl cursor-pointer absolute right-4 top-2 hover:rotate-180 hover:scale-125 transition ease-in-out"
-          @click="closeModal">X
-          <!-- <svg src="../assets/icons8-close.svg" class="bg-orange-500 text-white-300"></svg> -->
-          <font-awesome-icon icon="fa-regular fa-xmark-large" />
-        </span>
-        <div>
-          <h1 class="heading-1">Thank You!</h1>
-          <p class="text-md">Our Customer Services department will be in touch shortly.</p>
+        <div class="pt-8">
+          <h1 class="heading-1 mt-4 md:mt-6 invisible" ref="modalTitle">Thank You!</h1>
+          <p class="text-md m-2 invisible" ref="modalText">Our Customer Services department will be in touch shortly.
+          </p>
         </div>
+        <div class="lg:col-start-2 w-2/1 md:w-1/2 mx-auto mt-6 z-40">
+          <button
+            class="transition-all duration-400 ease-1 primary bg-black font-medium text-base font-medium tracking-wide text-white p-1 py-3 px-2 w-full hover:bg-slate-700 "
+            type="submit" @click="closeModal">
+            <div class="relative order-1">Place another query</div>
+          </button>
+        </div>
+        <hr class="modal-mid-ruler z-20" />
         <div class="mt-6 mr-6 mb-4">
           <p class="uppercase text-right -mb-2 font-bold italic">While you wait why not visit</p>
+          <hr />
           <div class="font-medium web-links-wrapper mt-2 text-right">
             <a :href="newArrivalsUrl" class="hover:font-bold transition linear">NEW IN - </a>
             <a :href="mensUrl" class="hover:font-bold transition linear">MENS - </a>
             <a :href="womensUrl" class="hover:font-bold transition linear">WOMENS - </a>
             <a :href="homewareUrl" class="hover:font-bold transition linear">HOME</a>
           </div>
+
+
+
+
         </div>
       </div>
     </div>
@@ -148,13 +148,14 @@
 
 import { ref, onMounted } from 'vue'
 
-
 export default {
 
     setup() {
     
     // REFS
     const formWrapper = ref(null)
+    const modalTitle = ref(null)
+    const modalText = ref(null)
     let modalIsVisible = ref(false)
     let processingMessageIsVisible = ref(false)
     let submitTextIsVisible = ref(true)
@@ -174,11 +175,14 @@ export default {
 
     const formFadeInOnPageLoad = () => {
       formWrapper.value.classList.add("animate-formFadeIn")
+      modalTitle.value.classList.add("animate-modalTitleFadeIn")
+      modalText.value.classList.add("animate-modalTextFadeIn")
     }
    // FORM FADE IN WHEN MOUNTED - END
 
   const onSubmit = (e) => {
     e.preventDefault()
+
     processingMessageIsVisible.value = true
     submitTextIsVisible.value = false
     formSubmitEffect.value = true
@@ -195,6 +199,7 @@ export default {
 
     setTimeout(() => {
       modalIsVisible.value = true
+       
 
       if (modalIsVisible.value) {
         document.body.style.overflowY = "hidden"
@@ -212,18 +217,18 @@ export default {
     formWrapper.value.classList.add("animate-formFadeIn");
     document.body.style.overflowY = "scroll"
   }
-    return { formWrapper, modalIsVisible, processingMessageIsVisible, submitTextIsVisible, dropdownIsVisible, formSubmitEffect, formFadeInOnPageLoad, onSubmit, messageDisplay, closeModal, newArrivalsUrl, mensUrl, womensUrl, homewareUrl }
-    }
+
+    return { formWrapper, modalTitle, modalText, modalIsVisible, processingMessageIsVisible, submitTextIsVisible, dropdownIsVisible, formSubmitEffect, formFadeInOnPageLoad, onSubmit, messageDisplay, closeModal, newArrivalsUrl, mensUrl, womensUrl, homewareUrl }
+  }
 
 };
 </script>
 
 <style scoped>
 
-
-body {
-  display: grid;
-  color: 
+:root {
+  --delay: "1s";
+  --duration: "150ms"
 }
 
 body,
@@ -233,6 +238,20 @@ h1 {
   display: block;
   font-size: 2em;
 }
+
+hr {
+height: 5px;
+background: linear-gradient(to left, #EDE9FE 1%, #C1AADD 20% );
+margin-top: 5px;
+}
+
+.modal-mid-ruler {
+  height: 2px;
+  width: 50%;
+  margin: -30px auto 0;
+  background: rgba(0, 0, 0, 0.089);
+}
+
 .heading-1 {
   font-size: clamp(42px, 10vw, 86px);
   font-weight: 500;
@@ -255,6 +274,10 @@ h1 {
   padding-bottom: 32px;
 }
 
+.mt-8 {
+  margin-top: 3rem;
+}
+
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -271,28 +294,8 @@ h1 {
   overflow: hidden;
 }
 
-.modal-inner::before {
-  content: "";
-  display: block;
-  height: 2px;
-  margin-top: 15px;
-  margin-left: 1.5rem;
-  margin-bottom: 5px;
-  background: black;
-  width: 80%;
-}
-
 .web-links-wrapper {
   text-transform: uppercase;
-}
-.web-links-wrapper::before {
-  content: "";
-  display: block;
-  height: 2px;
-  margin-left: auto;
-  margin-bottom: 5px;
-  background: black;
-  width: 80%;
 }
 
 textarea {
@@ -303,5 +306,25 @@ input, textarea {
   letter-spacing: .5px;
 }
 
+/* .animate-testFadeIn {
+  animation: var(--delay) modalTextFadeIn car(--duration) forwards;
+} */
+
+/* @keyframe modalTextFadeIn {
+      0% {
+          visibility: "hidden";
+            opacity: 0;
+            transform: "translateY(10%)";
+        }
+      
+        
+        100%{
+          visibility: "visible";
+            opacity: 1;
+            transform: "translatY(0)";
+        }
+      
+        
+} */
 
 </style>

@@ -7,6 +7,8 @@ module.exports = {
       slidein: "slidein .2s linear",
       formSubmitEffect: "formSubmitEffect 1s linear forwards",
       formFadeIn: "formFadeIn 250ms linear forwards",
+      modalTitleFadeIn: ".5s modalTitleFadeIn 550ms linear forwards",
+      modalTextFadeIn: "1s modalTextFadeIn 440ms linear forwards",
     },
     keyframes: {
       slidein: {
@@ -28,6 +30,42 @@ module.exports = {
       formFadeIn: {
         "0%": { opacity: 0.2, transform: "translateY(10%)" },
         "100%": {
+          opacity: 1,
+          transform: "translatY(0)",
+        },
+      },
+      modalTitleFadeIn: {
+        "0%": {
+          visibility: "hidden",
+          opacity: 0,
+          transform: "translateY(10%)",
+        },
+        "100%": {
+          visibility: "visible",
+          opacity: 1,
+          transform: "translatY(0)",
+        },
+      },
+      modalTextFadeIn: {
+        "0%": {
+          visibility: "hidden",
+          opacity: 0,
+          transform: "translateY(30%)",
+        },
+        "100%": {
+          visibility: "visible",
+          opacity: 1,
+          transform: "translatY(0)",
+        },
+      },
+      modalButtonFadeIn: {
+        "0%": {
+          visibility: "hidden",
+          opacity: 0,
+          transform: "translateY(30%)",
+        },
+        "100%": {
+          visibility: "visible",
           opacity: 1,
           transform: "translatY(0)",
         },
