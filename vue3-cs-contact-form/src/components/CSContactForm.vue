@@ -83,7 +83,7 @@
             <div class="relative placeholder-colour-fix">
               <textarea placeholder="Write your message here*"
                 class="outline-none text-black text-sm border border-solid border-black bg-transparent font-semibold tracking-wide w-full p-2 h-48 placeholder:text-slate-700 resize-none"
-                maxlength="10000"></textarea>
+                maxlength="10000" ref="textAreaInput"></textarea>
             </div>
           </div>
           <div class="flex-grow pb-6 lg:col-start-2">
@@ -104,25 +104,27 @@
 
     <!--? MESSAGE MODAL -->
     <div
-      class="fixed grid place-content-center top-0 left-0 right-0 bottom-0 bg-transparent overflow-hidden shadow-lg shadow-violet-500/50 border-white-400 modal-overlay">
-      <!-- v-if="modalIsVisible" -->
+      class="fixed grid place-content-center top-0 left-0 right-0 bottom-0 bg-transparent overflow-hidden shadow-lg shadow-violet-500/50 border-white-400 modal-overlay"
+      v-if="modalIsVisible">
+      <!--  -->
       <div class="absolute flex justify-between align-content-center col-span-6 col-start-0 top-5 left-10 right-10 bottom-5 md:col-span-2 md:col-start-2 
             xl:col-span-2 xl:col-start-2  flex flex-col text-center w-100 y-100 text-slate-800 bg-violet-100
             animate-slidein modal-inner">
         <div class="pt-8">
-          <h1 class="heading-1 mt-4 md:mt-6 invisible" ref="modalTitle">Thank You!</h1>
-          <p class="text-md m-2 invisible" ref="modalText">Our Customer Services department will be in touch shortly.
+          <h1 class="heading-1 mt-4 md:mt-6 invisible animate-modalTitleFadeIn" ref="modalTitle">Thank You!</h1>
+          <p class="text-md m-2 invisible animate-modalTextFadeIn" ref="modalText">Our Customer Services department will
+            be in
+            touch shortly.
           </p>
         </div>
         <div class="lg:col-start-2 w-2/1 md:w-1/2 mx-auto mt-6 z-40">
           <button
-            class="transition-all duration-400 ease-1 primary bg-black font-medium text-base font-medium tracking-wide text-white p-1 py-3 px-2 w-full hover:bg-slate-700 "
+            class="transition-all duration-400 ease-1 primary bg-black font-medium text-base font-medium tracking-wide text-white p-1 py-3 px-2 w-full hover:bg-slate-700 invisible animate-modalButtonFadeIn"
             type="submit" @click="closeModal">
             <div class="relative order-1">Place another query</div>
           </button>
         </div>
-        <hr class="modal-mid-ruler z-20" />
-        <div class="mt-6 mr-6 mb-4">
+        <div class="mt-6 mr-6 mb-4 invisible animate-modalLinksFadeIn">
           <p class="uppercase text-right -mb-2 font-bold italic">While you wait why not visit</p>
           <hr />
           <div class="font-medium web-links-wrapper mt-2 text-right">
@@ -154,8 +156,7 @@ export default {
     
     // REFS
     const formWrapper = ref(null)
-    const modalTitle = ref(null)
-    const modalText = ref(null)
+    const textAreaInput = ref(null)
     let modalIsVisible = ref(false)
     let processingMessageIsVisible = ref(false)
     let submitTextIsVisible = ref(true)
@@ -175,9 +176,7 @@ export default {
 
     const formFadeInOnPageLoad = () => {
       formWrapper.value.classList.add("animate-formFadeIn")
-      modalTitle.value.classList.add("animate-modalTitleFadeIn")
-      modalText.value.classList.add("animate-modalTextFadeIn")
-    }
+    } 
    // FORM FADE IN WHEN MOUNTED - END
 
   const onSubmit = (e) => {
@@ -199,7 +198,6 @@ export default {
 
     setTimeout(() => {
       modalIsVisible.value = true
-       
 
       if (modalIsVisible.value) {
         document.body.style.overflowY = "hidden"
@@ -216,9 +214,10 @@ export default {
     formWrapper.value.classList.remove("animate-formSubmitEffect");
     formWrapper.value.classList.add("animate-formFadeIn");
     document.body.style.overflowY = "scroll"
+    textAreaInput.value.value = ""
   }
 
-    return { formWrapper, modalTitle, modalText, modalIsVisible, processingMessageIsVisible, submitTextIsVisible, dropdownIsVisible, formSubmitEffect, formFadeInOnPageLoad, onSubmit, messageDisplay, closeModal, newArrivalsUrl, mensUrl, womensUrl, homewareUrl }
+    return { formWrapper, textAreaInput, modalIsVisible, processingMessageIsVisible, submitTextIsVisible, dropdownIsVisible, formSubmitEffect, formFadeInOnPageLoad, onSubmit, messageDisplay, closeModal, newArrivalsUrl, mensUrl, womensUrl, homewareUrl }
   }
 
 };
@@ -243,13 +242,6 @@ hr {
 height: 5px;
 background: linear-gradient(to left, #EDE9FE 1%, #C1AADD 20% );
 margin-top: 5px;
-}
-
-.modal-mid-ruler {
-  height: 2px;
-  width: 50%;
-  margin: -30px auto 0;
-  background: rgba(0, 0, 0, 0.089);
 }
 
 .heading-1 {
@@ -305,26 +297,5 @@ textarea {
 input, textarea {
   letter-spacing: .5px;
 }
-
-/* .animate-testFadeIn {
-  animation: var(--delay) modalTextFadeIn car(--duration) forwards;
-} */
-
-/* @keyframe modalTextFadeIn {
-      0% {
-          visibility: "hidden";
-            opacity: 0;
-            transform: "translateY(10%)";
-        }
-      
-        
-        100%{
-          visibility: "visible";
-            opacity: 1;
-            transform: "translatY(0)";
-        }
-      
-        
-} */
 
 </style>

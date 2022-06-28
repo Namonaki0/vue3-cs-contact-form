@@ -7,8 +7,10 @@ module.exports = {
       slidein: "slidein .2s linear",
       formSubmitEffect: "formSubmitEffect 1s linear forwards",
       formFadeIn: "formFadeIn 250ms linear forwards",
-      modalTitleFadeIn: ".5s modalTitleFadeIn 550ms linear forwards",
-      modalTextFadeIn: "1s modalTextFadeIn 440ms linear forwards",
+      modalTitleFadeIn: ".2s modalContentFadeIn 550ms linear forwards",
+      modalTextFadeIn: ".5s modalContentFadeIn 550ms linear forwards",
+      modalButtonFadeIn: ".5s modalContentFadeIn 500ms linear forwards",
+      modalLinksFadeIn: ".6s modalLinksFadeIn 560ms linear forwards",
     },
     keyframes: {
       slidein: {
@@ -24,7 +26,7 @@ module.exports = {
         "80%": { opacity: 0.2, transform: "scale(0.9)" },
         "100%": {
           opacity: 0,
-          transform: "translate(50%, 1%)",
+          transform: "translate(50%, 0%)",
         },
       },
       formFadeIn: {
@@ -46,7 +48,7 @@ module.exports = {
           transform: "translatY(0)",
         },
       },
-      modalTextFadeIn: {
+      modalContentFadeIn: {
         "0%": {
           visibility: "hidden",
           opacity: 0,
@@ -58,16 +60,16 @@ module.exports = {
           transform: "translatY(0)",
         },
       },
-      modalButtonFadeIn: {
+      modalLinksFadeIn: {
         "0%": {
           visibility: "hidden",
           opacity: 0,
-          transform: "translateY(30%)",
+          transform: "translateX(-10%)",
         },
         "100%": {
           visibility: "visible",
           opacity: 1,
-          transform: "translatY(0)",
+          transform: "translatX(0)",
         },
       },
     },
